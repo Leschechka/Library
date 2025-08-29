@@ -25,6 +25,15 @@ const library = [
   },
 ]
 
+const newBookBtn = document.getElementById('new-book');
+const dialog = document.querySelector('dialog');
+
+newBookBtn.addEventListener('click', () => {
+  dialog.showModal()
+});
+
+
+
 function Book(title, author, year, amountOfPages, isRead, id) {
   this.id = id
   this.title = title
@@ -68,10 +77,4 @@ function displayBookInLibrary(title, author, year, amountOfPages) {
   pagesPara.classList.add('pages')
   pagesPara.innerHTML = amountOfPages
   bookCardDiv.appendChild(pagesPara)
-}
-
-function logBooks() {
-  for (let i = 0; i < library.length; i++) {
-    console.log(library[i])
-  }
 }

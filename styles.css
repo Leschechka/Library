@@ -42,3 +42,28 @@ h1 {
 .pages {
 	text-align: right;
 }
+
+::backdrop {
+	background: rgba(103, 103, 103, 0.75);
+	backdrop-filter: blur(3px);
+}
+
+dialog {
+	background-color: burlywood;
+	border-radius: 10px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+label {
+	display: flex;
+}
+input {
+	flex-grow: 1;
+	background-color: rgb(208, 201, 191);
+	border: rgb(68, 56, 27) solid 1px;
+}
