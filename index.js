@@ -25,6 +25,22 @@ const library = [
   },
 ]
 
+document.querySelector('form').addEventListener('submit',(e) => {
+  e.preventDefault()
+})
+
+const submitBtn = document.getElementById('submit');
+submitBtn.addEventListener('click', getFormData)
+
+function getFormData() {
+  const title = document.getElementById('title').value
+  const author = document.getElementById('author').value
+  const year = document.getElementById('year').value
+  const pages = document.getElementById('pages').value
+  addBookToLibrary(title, author, year, pages, false)
+  dialog.close()
+}
+
 const newBookBtn = document.getElementById('new-book');
 const dialog = document.querySelector('dialog');
 
