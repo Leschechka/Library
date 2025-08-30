@@ -9,21 +9,21 @@ const library = [
   },
 ]
 
-document.querySelector('form').addEventListener('submit',(e) => {
+document.querySelector('form').addEventListener('submit', getFormData)
+
+function getFormData(e) {
   e.preventDefault()
   const title = document.getElementById('title').value
   const author = document.getElementById('author').value
   const year = document.getElementById('year').value
   const pages = document.getElementById('pages').value
-  addBookToLibrary(title, author, year, pages, false);
+  addBookToLibrary(title, author, year, pages, false)
   dialog.close()
-  document.getElementById('title').value = '';
-  document.getElementById('author').value = '';
-  document.getElementById('year').value = undefined;
-  document.getElementById('pages').value = undefined;
-})
-
-
+  document.getElementById('title').value = ''
+  document.getElementById('author').value = ''
+  document.getElementById('year').value = undefined
+  document.getElementById('pages').value = undefined
+}
 
 const newBookBtn = document.getElementById('new-book');
 const dialog = document.querySelector('dialog');
