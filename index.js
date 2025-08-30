@@ -9,35 +9,45 @@ const library = [
   },
 ]
 
-const titleInput =  document.getElementById('title')
-const authorInput =  document.getElementById('author')
+const titleInput = document.getElementById('title')
+const authorInput = document.getElementById('author')
 const yearInput = document.getElementById('year')
 const pagesInput = document.getElementById('pages')
+
+const newBookBtn = document.getElementById('new-book')
+const dialog = document.querySelector('dialog')
+
+newBookBtn.addEventListener('click', () => {
+  dialog.showModal()
+})
+
+function resetInputs() {
+  titleInput.value = ''
+  authorInput.value = ''
+  yearInput.value = undefined
+  pagesInput.value = undefined
+}
 
 document.querySelector('form').addEventListener('submit', getFormData)
 
 function getFormData(e) {
   e.preventDefault()
-  addBookToLibrary(titleInput.value, authorInput.value, yearInput.value, pagesInput.value, false)
+  addBookToLibrary(
+    titleInput.value,
+    authorInput.value,
+    yearInput.value,
+    pagesInput.value,
+    false
+  )
   dialog.close()
   resetInputs()
 }
 
-function resetInputs() {
-  titleInput.value = '';
-  authorInput.value = '';
-  yearInput.value = undefined;
-  pagesInput.value = undefined
-}
-
-const newBookBtn = document.getElementById('new-book');
-const dialog = document.querySelector('dialog');
-
-newBookBtn.addEventListener('click', () => {
-  dialog.showModal()
-});
-
-
+const cancelBtn = document.getElementById('cancel')
+cancelBtn.addEventListener('click', resetInputs)
+cancelBtn.addEventListener('click', () => {
+  dialog.close()
+})
 
 function Book(title, author, year, amountOfPages, isRead, id) {
   this.id = id
@@ -53,7 +63,7 @@ const bookCardsDiv = document.querySelector('.book-cards')
 function addBookToLibrary(title, author, year, amountOfPages, isRead) {
   const booksId = crypto.randomUUID()
   const newBook = new Book(title, author, year, amountOfPages, isRead, booksId)
-  library.push(newBook);
+  library.push(newBook)
 
   displayBookInLibrary(title, author, year, amountOfPages)
 }
