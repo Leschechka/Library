@@ -9,20 +9,25 @@ const library = [
   },
 ]
 
+const titleInput =  document.getElementById('title')
+const authorInput =  document.getElementById('author')
+const yearInput = document.getElementById('year')
+const pagesInput = document.getElementById('pages')
+
 document.querySelector('form').addEventListener('submit', getFormData)
 
 function getFormData(e) {
   e.preventDefault()
-  const title = document.getElementById('title').value
-  const author = document.getElementById('author').value
-  const year = document.getElementById('year').value
-  const pages = document.getElementById('pages').value
-  addBookToLibrary(title, author, year, pages, false)
+  addBookToLibrary(titleInput.value, authorInput.value, yearInput.value, pagesInput.value, false)
   dialog.close()
-  document.getElementById('title').value = ''
-  document.getElementById('author').value = ''
-  document.getElementById('year').value = undefined
-  document.getElementById('pages').value = undefined
+  resetInputs()
+}
+
+function resetInputs() {
+  titleInput.value = '';
+  authorInput.value = '';
+  yearInput.value = undefined;
+  pagesInput.value = undefined
 }
 
 const newBookBtn = document.getElementById('new-book');
