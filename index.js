@@ -7,39 +7,23 @@ const library = [
     isRead: false,
     id: 'sdvklsdnv-mcnoi3ovnid-cnvksdlnvkn',
   },
-  {
-    title: 'Mindfulness',
-    author: 'someone',
-    year: 2005,
-    amountOfPages: 403,
-    isRead: true,
-    id: 'sdvklsdnv-mcnoi3ovnid-cnvksdlnvkn',
-  },
-  {
-    title: 'Drei Kameraden',
-    author: 'Remark',
-    year: 2003,
-    amountOfPages: 889,
-    isRead: true,
-    id: 'sdvklsdnv-mcnoi3ovnid-cnvksdlnvkn',
-  },
 ]
 
 document.querySelector('form').addEventListener('submit',(e) => {
   e.preventDefault()
-})
-
-const submitBtn = document.getElementById('submit');
-submitBtn.addEventListener('click', getFormData)
-
-function getFormData() {
   const title = document.getElementById('title').value
   const author = document.getElementById('author').value
   const year = document.getElementById('year').value
   const pages = document.getElementById('pages').value
-  addBookToLibrary(title, author, year, pages, false)
+  addBookToLibrary(title, author, year, pages, false);
   dialog.close()
-}
+  document.getElementById('title').value = '';
+  document.getElementById('author').value = '';
+  document.getElementById('year').value = undefined;
+  document.getElementById('pages').value = undefined;
+})
+
+
 
 const newBookBtn = document.getElementById('new-book');
 const dialog = document.querySelector('dialog');
