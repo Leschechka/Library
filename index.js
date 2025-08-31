@@ -1,13 +1,4 @@
-const library = [
-  {
-    title: 'Atomic Habits',
-    author: 'someone',
-    year: 2007,
-    amountOfPages: 567,
-    isRead: false,
-    id: 'sdvklsdnv-mcnoi3ovnid-cnvksdlnvkn',
-  },
-]
+const library = []
 
 const titleInput = document.getElementById('title')
 const authorInput = document.getElementById('author')
@@ -24,8 +15,8 @@ newBookBtn.addEventListener('click', () => {
 function resetInputs() {
   titleInput.value = ''
   authorInput.value = ''
-  yearInput.value = undefined
-  pagesInput.value = undefined
+  yearInput.value = ''
+  pagesInput.value = ''
 }
 
 document.querySelector('form').addEventListener('submit', getFormData)
@@ -65,18 +56,23 @@ function addBookToLibrary(title, author, year, amountOfPages, isRead) {
   const newBook = new Book(title, author, year, amountOfPages, isRead, booksId)
   library.push(newBook)
 
-  displayBookInLibrary(title, author, year, amountOfPages)
+  displayBookInLibrary(title, author, year, amountOfPages, booksId)
 }
 
-function displayBookInLibrary(title, author, year, amountOfPages) {
+function displayBookInLibrary(title, author, year, amountOfPages, id) {
   const bookCardDiv = document.createElement('div')
   bookCardDiv.classList.add('book-card')
+  bookCardDiv.setAttribute('data-id', id)
   bookCardsDiv.appendChild(bookCardDiv)
+
+  const bookDiv = document.createElement('div')
+  bookDiv.classList.add('book')
+  bookCardDiv.appendChild(bookDiv)
 
   const authorPara = document.createElement('p')
   authorPara.classList.add('author')
-  authorPara.innerHTML = author
-  bookCardDiv.appendChild(authorPara)
+  authorPara.innerHTML = `Written by ${author}`
+  bookDiv.appendChild(authorPara)
 
   const titlePara = document.createElement('p')
   titlePara.classList.add('title')
@@ -86,10 +82,18 @@ function displayBookInLibrary(title, author, year, amountOfPages) {
   const yearsSpan = document.createElement('span')
   yearsSpan.innerHTML = `(${year})`
   titlePara.appendChild(yearsSpan)
-  bookCardDiv.appendChild(titlePara)
+  bookDiv.appendChild(titlePara)
 
   const pagesPara = document.createElement('p')
   pagesPara.classList.add('pages')
   pagesPara.innerHTML = amountOfPages
-  bookCardDiv.appendChild(pagesPara)
+  bookDiv.appendChild(pagesPara)
+
+  const deleteBookBtn = document.createElement('button')
+  deleteBookBtn.classList.add('delete')
+  deleteBookBtn.innerText = 'X'
+  deleteBookBtn.setAttribute('type', 'button')
+  bookCardDiv.appendChild(deleteBookBtn)
 }
+
+addBookToLibrary('Atomic Habbits', 'MACAN', 2004, 354)

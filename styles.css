@@ -1,95 +1,114 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	background-color: rgba(128, 189, 126, 0.445);
-	margin: 1px;
+  background-color: rgba(128, 189, 126, 0.445);
+  margin: 1px;
 }
 
 h1 {
-	text-align: center;
-	font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #new-book {
-	width:100%;
-	text-align: center;
-	background-color: rgb(71, 165, 75);
-	font-size: 40px;
-	font-weight: bold;
-	border: 3px black solid;
-	border-radius: 6px;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-	margin-bottom: 10px;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(71, 165, 75);
+  font-size: 40px;
+  font-weight: bold;
+  border: 3px black solid;
+  border-radius: 6px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-bottom: 10px;
 }
 
 #new-book:hover {
-	background-color: rgb(107, 226, 117);
-	box-shadow: 1px 1px 1px red;
+  background-color: rgb(107, 226, 117);
+  box-shadow: 1px 1px 1px red;
 }
 
 #new-book:active {
-	box-shadow: 0 0 0;
-	background-color: brown;
-} 
+  box-shadow: 0 0 0;
+  background-color: brown;
+}
 
 .book-cards {
-	display: flex;
-	flex-wrap: wrap;
-	padding: 0 1rem;
-	gap: 0.6rem;
-	justify-content: center;
-	width: 100%;
-	margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+  gap: 0.6rem;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .book-card {
-	background-color: rgb(103, 32, 32);
-	border: black 3px solid;
-	border-radius: 7px;
-	width: 200px;
-	height: 300px;
-	color: bisque;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	padding: 5px 10px;
+  border: black 3px solid;
+  border-radius: 7px;
+}
+
+.book {
+  background-color: rgb(61, 61, 61);
+  width: 200px;
+  height: 300px;
+  color: bisque;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  border-bottom: solid black 5px;
+}
+
+.delete {
+  background-color: red;
+  color: white;
+  border-radius: 4px;
+  border: 0;
+  width: 100%;
 }
 
 .author {
-	text-align: left;
+  text-align: left;
+  font-size: smaller;
+  text-decoration: underline;
 }
 
 .title {
-	text-align: center;
+  text-align: center;
+  font-size: larger;
 }
 
 .pages {
-	text-align: right;
+  text-align: right;
 }
 
 ::backdrop {
-	background: rgba(103, 103, 103, 0.75);
-	backdrop-filter: blur(3px);
+  background: rgba(103, 103, 103, 0.75);
+  backdrop-filter: blur(3px);
 }
 
 dialog {
-	background-color: burlywood;
-	border-radius: 10px;
+  background-color: burlywood;
+  border-radius: 10px;
 }
 
 form {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 label {
-	display: flex;
+  display: flex;
 }
 input {
-	flex-grow: 1;
-	background-color: rgb(208, 201, 191);
-	border: rgb(68, 56, 27) solid 1px;
+  flex-grow: 1;
+  background-color: rgb(208, 201, 191);
+  border: rgb(68, 56, 27) solid 1px;
 }
