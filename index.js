@@ -93,7 +93,21 @@ function displayBookInLibrary(title, author, year, amountOfPages, id) {
   deleteBookBtn.classList.add('delete')
   deleteBookBtn.innerText = 'X'
   deleteBookBtn.setAttribute('type', 'button')
+  deleteBookBtn.addEventListener('click', deleteBook)
   bookCardDiv.appendChild(deleteBookBtn)
+}
+
+function deleteBook(e) {
+  const currentBookCard = e.target.parentElement;
+  const currentBookCardsId = currentBookCard.dataset.id
+  
+  for (let i = 0; i < library.length; i++) {
+    if (library[i].id == currentBookCardsId) {
+      library.splice(i, 1)
+    }
+  }
+
+  currentBookCard.remove()
 }
 
 addBookToLibrary('Atomic Habbits', 'MACAN', 2004, 354)
