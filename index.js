@@ -49,6 +49,10 @@ function Book(title, author, year, amountOfPages, isRead, id) {
   this.isRead = isRead
 }
 
+Book.prototype.toggleIsRead = function () {
+  this.isRead = !this.isRead
+}
+
 const bookCardsDiv = document.querySelector('.book-cards')
 
 function addBookToLibrary(title, author, year, amountOfPages, isRead) {
@@ -89,6 +93,14 @@ function displayBookInLibrary(title, author, year, amountOfPages, id) {
   pagesPara.innerHTML = amountOfPages
   bookDiv.appendChild(pagesPara)
 
+  const toggleReadBtn = document.createElement('button')
+  toggleReadBtn.classList.add('toggle-read')
+  toggleReadBtn.classList.add('unread')
+  toggleReadBtn.innerText = 'unread'
+  toggleReadBtn.setAttribute('type', 'button')
+  toggleReadBtn.addEventListener('click', toggleReadStatus)
+  bookCardDiv.appendChild(toggleReadBtn)
+
   const deleteBookBtn = document.createElement('button')
   deleteBookBtn.classList.add('delete')
   deleteBookBtn.innerText = 'X'
@@ -97,10 +109,31 @@ function displayBookInLibrary(title, author, year, amountOfPages, id) {
   bookCardDiv.appendChild(deleteBookBtn)
 }
 
+function toggleReadStatus(e) {
+  const btn = e.target
+  const currentBookCardsId = btn.parentElement.dataset.id
+
+  for (let i = 0; i < library.length; i++) {
+    if (library[i].id == currentBookCardsId) {
+      library[i].toggleIsRead()
+
+      if (library[i].isRead) {
+        btn.classList.remove('unread')
+        btn.classList.add('read')
+        btn.innerText = 'read'
+      } else {
+        btn.classList.remove('read')
+        btn.classList.add('unread')
+        btn.innerText = 'unread'
+      }
+    }
+  }
+}
+
 function deleteBook(e) {
-  const currentBookCard = e.target.parentElement;
+  const currentBookCard = e.target.parentElement
   const currentBookCardsId = currentBookCard.dataset.id
-  
+
   for (let i = 0; i < library.length; i++) {
     if (library[i].id == currentBookCardsId) {
       library.splice(i, 1)
@@ -110,4 +143,4 @@ function deleteBook(e) {
   currentBookCard.remove()
 }
 
-addBookToLibrary('Atomic Habbits', 'MACAN', 2004, 354)
+addBookToLibrary('Atomic Habbits', 'MACAN', 2004, 354, false)
